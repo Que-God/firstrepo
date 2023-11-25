@@ -17,6 +17,27 @@ yellow(){
     echo -e "\033[33m\033[01m$1\033[0m"
 }
 
+REGEX=("debian" "ubuntu" "centos|red hat|kernel|oracle linux|alma|rocky" "'amazon linux'" "fedora")
+RELEASE=("Debian" "Ubuntu" "CentOS" "CentOS" "Fedora")
+PACKAGE_UPDATE=("apt-get update" "apt-get update" "yum -y update" "yum -y update" "yum -y update")
+PACKAGE_INSTALL=("apt -y install" "apt -y install" "yum -y install" "yum -y install" "yum -y install")
+PACKAGE_REMOVE=("apt -y remove" "apt -y remove" "yum -y remove" "yum -y remove" "yum -y remove")
+PACKAGE_UNINSTALL=("apt -y autoremove" "apt -y autoremove" "yum -y autoremove" "yum -y autoremove" "yum -y autoremove")
+
+CMD=("$(grep -i pretty_name /etc/os-release 2>/dev/null | cut -d \" -f2)" "$(hostnamectl 2>/dev/null | grep -i system | cut -d : -f2)" "$(lsb_release -sd 2>/dev/null)" "$(grep -i description /etc/lsb-release 2>/dev/null | cut -d \" -f2)" "$(grep . /etc/redhat-release 2>/dev/null)" "$(grep . /etc/issue 2>/dev/null | cut -d \\ -f1 | sed '/^[ ]*$/d')") 
+
+for i in "${CMD[@]}"; do
+    SYS="$i" && [[ -n $SYS ]] && break
+done
+
+for ((int = 0; int < ${#REGEX[@]}; int++)); do
+    if [[ $(echo "$SYS" | tr '[:upper:]' '[:lower:]') =~ ${REGEX[int]} ]]; then
+        SYSTEM="${RELEASE[int]}" && [[ -n $SYSTEM ]] && break
+    fi
+done
+
+[[ $EUID -ne 0 ]] && red "注意：请在root用户下运行脚本" && exit 1
+[[ -z $SYSTEM ]] && red "不支持VPS的当前系统，请使用主流操作系统" && exit 1
 
 
 certificate(){
@@ -221,7 +242,7 @@ BBR(){
             	cat > /etc/sysctl.conf << EOF
             	net.core.default_qdisc=fq_pie
             	net.ipv4.tcp_congestion_control=bbr
-            	EOF
+EOF
             	sysctl -p
             echo "XanMod内核安装并BBR3启用成功。重启后生效"
             rm -f /etc/apt/sources.list.d/xanmod-release.list
