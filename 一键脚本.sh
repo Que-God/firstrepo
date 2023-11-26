@@ -597,7 +597,6 @@ menu1(){
     echo ""
     clear
     done
-    ;;
 }
 
 
@@ -635,7 +634,6 @@ menu2(){
     echo ""
     clear
     done
-    ;;
 }
 
 
@@ -672,7 +670,6 @@ menu3(){
     echo ""
     clear
     done
-    ;;
 }
 
 
@@ -705,5 +702,4 @@ menu4(){
     echo ""
     clear
     done
-    ;;
 }
