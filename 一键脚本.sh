@@ -585,6 +585,7 @@ menu1(){
           echo
 
           ;;
+		  
 		0) menu ;;
         *) echo "无效的输入!" ;;
     esac
