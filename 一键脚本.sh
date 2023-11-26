@@ -469,8 +469,8 @@ menu() {
     echo "#############################################################"
     echo -e "#                   ${RED}VPS科学上网环境搭建${PLAIN}                     #"
     echo -e "# ${GREEN}作者${PLAIN}: GDK                                                 #"
-    echo -e "# ${GREEN}博客${PLAIN}: gdkvip.blogspot.com                                #"
-    echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/Que-God                       #"
+    echo -e "# ${GREEN}博客${PLAIN}: gdkvip.blogspot.com                                 #"
+    echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/Que-God                        #"
     echo "#############################################################"
     echo ""
     echo -e " ${GREEN}1.${PLAIN} VPS系统相关"
@@ -605,10 +605,10 @@ menu2(){
     clear
 	while true; do
     echo "#############################################################"
-    echo -e "#                   ${RED}VPS流媒体解锁查询${PLAIN}                      #"
-    echo -e "# ${GREEN}作者${PLAIN}: GDK                                             #"
-    echo -e "# ${GREEN}博客${PLAIN}: gdkvip.blogspot.com                                #"
-    echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/Que-God                       #"
+    echo -e "#                   ${RED}VPS流媒体解锁查询${PLAIN}                       #"
+    echo -e "# ${GREEN}作者${PLAIN}: GDK                                                 #"
+    echo -e "# ${GREEN}博客${PLAIN}: gdkvip.blogspot.com                                 #"
+    echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/Que-God                        #"
     echo "#############################################################"
     echo ""
     echo -e " ${GREEN}1.${PLAIN} VPS流媒体全功能测试"
@@ -642,8 +642,8 @@ menu3(){
     clear
 	while true; do
     echo "#############################################################"
-    echo -e "#                   ${RED}ACME证书相关${PLAIN}                           #"
-    echo -e "# ${GREEN}作者${PLAIN}: GDK                                               #"
+    echo -e "#                   ${RED}ACME证书相关${PLAIN}                            #"
+    echo -e "# ${GREEN}作者${PLAIN}: GDK                                                 #"
     echo -e "# ${GREEN}博客${PLAIN}: gdkvip.blogspot.com                                 #"
     echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/Que-God                        #"
     echo "#############################################################"
