@@ -684,15 +684,17 @@ menu4(){
     echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/Que-God                        #"
     echo "#############################################################"
     echo ""
-    echo -e " ${GREEN}1.${PLAIN} X-UI面板"
-    echo -e " ${GREEN}2.${PLAIN} Alist面板"
+    echo -e " ${GREEN}1.${PLAIN} X-UI原版"
+	echo -e " ${GREEN}2.${PLAIN} X-UI修改版(持续更新)"
+    echo -e " ${GREEN}3.${PLAIN} Alist面板"
     echo " -------------"
     echo -e " ${GREEN}0.${PLAIN} 返回主菜单"
     echo ""
-    read -rp " 请输入选项 [0-2]:" menuInput
+    read -rp " 请输入选项 [0-3]:" menuInput
     case $menuInput in
         1) bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh) ;;
-        2) Alist ;;
+        2) bash <(curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/master/install.sh) ;;		
+        3) Alist ;;
         0) menu ;;
         *) echo "无效的输入!" ;;
     esac
