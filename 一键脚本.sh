@@ -703,3 +703,5 @@ menu4(){
     clear
     done
 }
+
+menu
