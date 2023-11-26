@@ -131,7 +131,7 @@ BBR(){
     echo ""
     read -rp " 请输入选项 [0-4]:" menuInput
     case $menuInput in
-        1) bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh) ;;
+        1) wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh ;;
         2) 
           if dpkg -l | grep -q 'linux-xanmod'; then
             while true; do
@@ -340,34 +340,36 @@ switch_provider(){
 menu() {
     clear
     echo "#############################################################"
-    echo -e "#                   ${RED}VPS科学上网环境搭建${PLAIN}                  #"
-    echo -e "# ${GREEN}作者${PLAIN}: GDK                                          #"
-    echo -e "# ${GREEN}博客${PLAIN}: gdkvip.blogspot.com                            #"
-    echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/Que-God                    #"
+    echo -e "#                   ${RED}VPS科学上网环境搭建${PLAIN}                     #"
+    echo -e "# ${GREEN}作者${PLAIN}: GDK                                                 #"
+    echo -e "# ${GREEN}博客${PLAIN}: gdkvip.blogspot.com                                #"
+    echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/Que-God                       #"
     echo "#############################################################"
     echo ""
-    echo "------------------------"
-    echo -e " 1. 设置脚本启动快捷键 "
-    echo "------------------------"
-    echo -e " ${GREEN}2.${PLAIN} VPS系统相关"
-    echo -e " ${GREEN}3.${PLAIN} VPS流媒体解锁查询"
-    echo -e " ${GREEN}4.${PLAIN} ACME证书相关"
-    echo -e " ${GREEN}5.${PLAIN} 面板搭建"
+    echo -e " ${GREEN}1.${PLAIN} VPS系统相关"
+    echo -e " ${GREEN}2.${PLAIN} VPS流媒体解锁查询"
+    echo -e " ${GREEN}3.${PLAIN} ACME证书相关"
+    echo -e " ${GREEN}4.${PLAIN} 面板搭建"
+	echo -e " ${GREEN}5.${PLAIN} 设置脚本启动快捷键"
     echo " -------------"
     echo -e " ${GREEN}0.${PLAIN} 退出脚本"
     read -rp "请输入选项 [0-5]: " NumberInput
     case "$NumberInput" in
-        1)
-            clear
+        1) menu1 ;;
+        2) menu2 ;;
+        3) menu3 ;;
+        4) menu4 ;;
+        5) 
+		    clear
             read -p "请输入你的快捷按键: " kuaijiejian
             echo "alias $kuaijiejian='curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && chmod +x kejilion.sh && ./kejilion.sh'" >> ~/.bashrc
             echo "快捷键已添加。请重新启动终端，或运行 'source ~/.bashrc' 以使修改生效。"
-            ;;
-        2) menu1 ;;
-        3) menu2 ;;
-        4) menu3 ;;
-        5) menu4 ;;
-        *) exit 1 ;;
+			;;
+        0)
+        clear
+        exit
+        ;;
+        *)echo "无效的输入!"
     esac
 }
 
@@ -375,11 +377,12 @@ menu() {
 
 menu1(){
     clear
+	while true; do
     echo "#############################################################"
-    echo -e "#                   ${RED}VPS系统相关${PLAIN}                    #"
-    echo -e "# ${GREEN}作者${PLAIN}: GDK                                          #"
-    echo -e "# ${GREEN}博客${PLAIN}: gdkvip.blogspot.com                            #"
-    echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/Que-God                    #"
+    echo -e "#                   ${RED}VPS系统相关${PLAIN}                             #"
+    echo -e "# ${GREEN}作者${PLAIN}: GDK                                                 #"
+    echo -e "# ${GREEN}博客${PLAIN}: gdkvip.blogspot.com                                 #"
+    echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/Que-God                        #"
     echo "#############################################################"
     echo ""
     echo -e " ${GREEN}1.${PLAIN} 修改登录方式为 root + 密码"
@@ -582,20 +585,28 @@ menu1(){
           echo
 
           ;;
-
-        *) exit 1 ;;
+		0) menu ;;
+        *) echo "无效的输入!" ;;
     esac
+    echo -e "\033[0;32m操作完成\033[0m"
+    echo "按任意键继续..."
+    read -n 1 -s -r -p ""
+    echo ""
+    clear
+    done
+    ;;
 }
 
 
 
 menu2(){
     clear
+	while true; do
     echo "#############################################################"
-    echo -e "#                   ${RED}VPS流媒体解锁查询${PLAIN}                  #"
-    echo -e "# ${GREEN}作者${PLAIN}: GDK                                          #"
-    echo -e "# ${GREEN}博客${PLAIN}: gdkvip.blogspot.com                            #"
-    echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/Que-God                    #"
+    echo -e "#                   ${RED}VPS流媒体解锁查询${PLAIN}                      #"
+    echo -e "# ${GREEN}作者${PLAIN}: GDK                                             #"
+    echo -e "# ${GREEN}博客${PLAIN}: gdkvip.blogspot.com                                #"
+    echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/Que-God                       #"
     echo "#############################################################"
     echo ""
     echo -e " ${GREEN}1.${PLAIN} VPS流媒体全功能测试"
@@ -613,19 +624,27 @@ menu2(){
             bash <(curl -Ls https://cdn.jsdelivr.net/gh/missuo/OpenAI-Checker/openai.sh)
             ;;
         0) menu ;;
-        *) exit 1 ;;
+        *) echo "无效的输入!" ;;
     esac
+    echo -e "\033[0;32m操作完成\033[0m"
+    echo "按任意键继续..."
+    read -n 1 -s -r -p ""
+    echo ""
+    clear
+    done
+    ;;
 }
 
 
 
 menu3(){
     clear
+	while true; do
     echo "#############################################################"
-    echo -e "#                   ${RED}ACME证书相关${PLAIN}                  #"
-    echo -e "# ${GREEN}作者${PLAIN}: GDK                                          #"
-    echo -e "# ${GREEN}博客${PLAIN}: gdkvip.blogspot.com                            #"
-    echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/Que-God                    #"
+    echo -e "#                   ${RED}ACME证书相关${PLAIN}                           #"
+    echo -e "# ${GREEN}作者${PLAIN}: GDK                                               #"
+    echo -e "# ${GREEN}博客${PLAIN}: gdkvip.blogspot.com                                 #"
+    echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/Que-God                        #"
     echo "#############################################################"
     echo ""
     echo -e " ${GREEN}1.${PLAIN} 证书申请"
@@ -642,19 +661,27 @@ menu3(){
         3) revoke_cert ;;
         4) switch_provider ;;
         0) menu ;;
-        *) exit 1 ;;
+        *) echo "无效的输入!" ;;
     esac
+    echo -e "\033[0;32m操作完成\033[0m"
+    echo "按任意键继续..."
+    read -n 1 -s -r -p ""
+    echo ""
+    clear
+    done
+    ;;
 }
 
 
 
 menu4(){
     clear
+	while true; do
     echo "#############################################################"
-    echo -e "#                   ${RED}常用面板搭建${PLAIN}                  #"
-    echo -e "# ${GREEN}作者${PLAIN}: GDK                                          #"
-    echo -e "# ${GREEN}博客${PLAIN}: gdkvip.blogspot.com                            #"
-    echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/Que-God                    #"
+    echo -e "#                   ${RED}常用面板搭建${PLAIN}                            #"
+    echo -e "# ${GREEN}作者${PLAIN}: GDK                                                 #"
+    echo -e "# ${GREEN}博客${PLAIN}: gdkvip.blogspot.com                                 #"
+    echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/Que-God                        #"
     echo "#############################################################"
     echo ""
     echo -e " ${GREEN}1.${PLAIN} X-UI面板"
@@ -667,8 +694,13 @@ menu4(){
         1) bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh) ;;
         2) Alist ;;
         0) menu ;;
-        *) exit 1 ;;
+        *) echo "无效的输入!" ;;
     esac
+    echo -e "\033[0;32m操作完成\033[0m"
+    echo "按任意键继续..."
+    read -n 1 -s -r -p ""
+    echo ""
+    clear
+    done
+    ;;
 }
-
-menu
