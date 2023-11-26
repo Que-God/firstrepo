@@ -489,7 +489,7 @@ menu() {
         5) 
 		    clear
             read -p "请输入你的快捷按键: " kuaijiejian
-            echo "alias $kuaijiejian='curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && chmod +x kejilion.sh && ./kejilion.sh'" >> ~/.bashrc
+            echo "alias $kuaijiejian='wget -N --no-check-certificate https://raw.githubusercontent.com/Que-God/firstrepo/master/一键脚本.sh && chmod +x 一键脚本.sh && ./一键脚本.sh'" >> ~/.bashrc
             echo "快捷键已添加。请重新启动终端，或运行 'source ~/.bashrc' 以使修改生效。"
 			;;
         0)
