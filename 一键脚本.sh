@@ -249,7 +249,7 @@ Alist(){
 
 BBR(){
     clear
-    echo -e " 1. BBR加速4合一脚本"
+    echo -e " 1. BBR管理脚本"
     echo -e " 2. BBR3"
     echo -e " 3. 检测BBR是否开启"
     echo -e " 4. 检测BBR3是否开启"
@@ -258,7 +258,23 @@ BBR(){
     echo ""
     read -rp " 请输入选项 [0-4]:" menuInput
     case $menuInput in
-        1) wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh ;;
+        1) 
+			clear
+			# 检查并安装 wget（如果需要）
+			if ! command -v wget &>/dev/null; then
+				if command -v apt &>/dev/null; then
+					apt update -y && apt install -y wget
+				elif command -v yum &>/dev/null; then
+					yum -y update && yum -y install wget
+				else
+					echo "未知的包管理器!"
+					exit 1
+				fi
+			fi
+			wget --no-check-certificate -O tcpx.sh https://raw.githubusercontent.com/ylx2016/Linux-NetSpeed/master/tcpx.sh
+			chmod +x tcpx.sh
+			./tcpx.sh
+			;;		
         2) 
           if dpkg -l | grep -q 'linux-xanmod'; then
             while true; do
